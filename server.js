@@ -44,14 +44,15 @@ app.get('/signin', (req, res) => {
   res.render('signin');
 });
 
+
 app.post('/signin', async (req, res) => {
   const { username, password } = req.body;
   const user = await User.findOne({ username, password });
   if (user) {
-    res.send('Sign in successful!');
-  } else {
-    res.send('Invalid credentials');
-  }
+    res.render('succesfully_signin', { username: user.username });
+  } else if (username && password) {
+    res.status(400).render('signin', { error: 'Invalid credentials' });
+  } 
 });
 
 app.listen(3000, () => console.log('Server running on http://localhost:3000'));

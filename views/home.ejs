@@ -12,7 +12,7 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background: linear-gradient(-45deg, #23a6d5, #23d5ab, #e73c7e, #ee7752);
             background-size: 400% 400%;
             animation: gradientBG 10s ease infinite;
         }
@@ -24,44 +24,46 @@
         header {
             background: #2d3e50;
             color: #fff;
-            padding: 1.5rem 0;
+            padding: 2rem 0 1.2rem 0;
             text-align: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 8px rgba(35,166,213,0.08);
+            letter-spacing: 1px;
         }
         .hero {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             animation: fadeIn 1.5s;
         }
         .hero-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
+            font-size: 4.5rem;
+            margin-bottom: 1.2rem;
             color: #23a6d5;
             animation: bounce 2s infinite;
         }
         @keyframes bounce {
             0%, 100% { transform: translateY(0);}
-            50% { transform: translateY(-15px);}
+            50% { transform: translateY(-18px);}
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(30px);}
             to { opacity: 1; transform: translateY(0);}
         }
         .hero-title {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             font-weight: bold;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.7rem;
             color: #2d3e50;
             text-shadow: 0 2px 8px rgba(35,166,213,0.08);
+            letter-spacing: 1px;
         }
         .hero-desc {
-            font-size: 1.15rem;
+            font-size: 1.18rem;
             color: #444;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.7rem;
             text-align: center;
-            max-width: 400px;
+            max-width: 440px;
         }
         main {
             flex: 1;
@@ -71,36 +73,39 @@
             justify-content: center;
         }
         .actions {
-            margin-top: 2rem;
+            margin-top: 2.2rem;
+            display: flex;
+            gap: 1.2rem;
         }
         .actions a {
             text-decoration: none;
-            color: #2d3e50;
-            background: #e0e7ef;
-            padding: 0.75rem 1.5rem;
-            border-radius: 4px;
-            margin: 0 0.5rem;
-            font-weight: 500;
-            transition: background 0.2s, transform 0.2s;
-            box-shadow: 0 2px 8px rgba(35,166,213,0.08);
+            color: #fff;
+            background: linear-gradient(90deg, #23a6d5 0%, #23d5ab 100%);
+            padding: 0.9rem 2.2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 2px 8px rgba(35,166,213,0.10);
+            transition: background 0.2s, transform 0.2s, color 0.2s;
         }
         .actions a:hover {
-            background: #23a6d5;
+            background: linear-gradient(90deg, #23d5ab 0%, #23a6d5 100%);
             color: #fff;
-            transform: translateY(-3px) scale(1.05);
+            transform: translateY(-3px) scale(1.06);
         }
         .box-shadow {
             box-shadow: 0 4px 24px rgba(0,0,0,0.12), 0 1.5px 4px rgba(0,0,0,0.10);
             background: #fff;
-            border-radius: 10px;
-            padding: 2rem 2.5rem;
+            border-radius: 12px;
+            padding: 2.2rem 2.7rem;
         }
         footer {
             text-align: center;
-            padding: 1rem 0;
+            padding: 1.2rem 0 1.1rem 0;
             background: #f0f2f5;
             color: #888;
-            font-size: 0.95rem;
+            font-size: 1.05rem;
+            letter-spacing: 0.5px;
         }
     </style>
 </head>
