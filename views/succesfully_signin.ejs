@@ -2,117 +2,748 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sign In Successful</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome - Mandvi's Web App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            background: linear-gradient(-45deg, #23a6d5, #23d5ab, #e73c7e, #ee7752);
-            background-size: 400% 400%;
-            animation: gradientBG 10s ease infinite;
-            min-height: 100vh;
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
         }
-        @keyframes gradientBG {
-            0% {background-position: 0% 50%;}
-            50% {background-position: 100% 50%;}
-            100% {background-position: 0% 50%;}
+        
+        /* Success particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
         }
-        .banner {
-            margin: 0 auto;
-            padding: 48px 56px 36px 56px;
-            background: #fff;
-            color: #207245;
-            border: none;
-            border-radius: 22px;
-            text-align: center;
+        
+        .particle {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.6);
             font-size: 1.5rem;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            max-width: 440px;
-            box-shadow: 0 12px 36px rgba(35,166,213,0.15), 0 2px 8px rgba(0,0,0,0.10);
-            animation: fadeIn 1.2s;
+            animation: particle-float 4s linear infinite;
+            opacity: 0;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px);}
-            to { opacity: 1; transform: translateY(0);}
+        
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 20%; animation-delay: 0.5s; }
+        .particle:nth-child(3) { left: 30%; animation-delay: 1s; }
+        .particle:nth-child(4) { left: 40%; animation-delay: 1.5s; }
+        .particle:nth-child(5) { left: 50%; animation-delay: 2s; }
+        .particle:nth-child(6) { left: 60%; animation-delay: 2.5s; }
+        .particle:nth-child(7) { left: 70%; animation-delay: 3s; }
+        .particle:nth-child(8) { left: 80%; animation-delay: 3.5s; }
+        .particle:nth-child(9) { left: 90%; animation-delay: 4s; }
+        
+        @keyframes particle-float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
         }
-        .success-icon {
-            font-size: 3.5rem;
-            color: #23d5ab;
-            margin-bottom: 14px;
-            display: block;
-            animation: pop 0.7s;
+        
+        /* Success container */
+        .success-container {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            animation: slideUp 1s ease-out;
+            position: relative;
+            z-index: 2;
+            max-width: 500px;
+            width: 100%;
         }
-        @keyframes pop {
-            0% { transform: scale(0.7); opacity: 0; }
-            80% { transform: scale(1.1); opacity: 1; }
+        
+        .checkmark {
+            font-size: 4rem;
+            color: #4ade80;
+            margin-bottom: 1.5rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
             100% { transform: scale(1); }
         }
-        .banner strong {
-            font-size: 2.3rem;
-            display: block;
-            margin-bottom: 14px;
-            color: #23a6d5;
-            letter-spacing: 1.2px;
-        }
-        .username {
-            color: #207245;
+        
+        .success-title {
+            font-size: 2.5rem;
             font-weight: 700;
-            font-size: 1.18rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .success-message {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .user-info {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .user-info h3 {
+            color: #4ade80;
             margin-bottom: 0.5rem;
+            font-size: 1.1rem;
         }
-        .desc {
-            color: #444;
-            font-size: 1.12rem;
-            margin-bottom: 1.7rem;
-        }
-        button {
-            margin-top: 18px;
-            padding: 13px 36px;
-            font-size: 1.13rem;
-            background: linear-gradient(90deg, #23a6d5 0%, #23d5ab 100%);
-            color: #fff;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: 700;
-            box-shadow: 0 2px 8px rgba(35,166,213,0.10);
-            transition: background 0.2s, transform 0.2s;
-        }
-        button:hover {
-            background: linear-gradient(90deg, #23d5ab 0%, #23a6d5 100%);
-            transform: translateY(-2px) scale(1.04);
-        }
-        .footer-link {
-            display: block;
-            margin-top: 2.2rem;
-            color: #23a6d5;
-            text-decoration: none;
-            font-size: 1.03rem;
+        
+        .user-info p {
+            color: white;
+            font-size: 1.1rem;
             font-weight: 500;
-            transition: color 0.2s;
         }
-        .footer-link:hover {
-            color: #e73c7e;
-            text-decoration: underline;
+        
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, #4ade80, #22c55e);
+            color: white;
+            box-shadow: 0 8px 25px rgba(74, 222, 128, 0.4);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(45deg, #22c55e, #16a34a);
+            box-shadow: 0 15px 35px rgba(74, 222, 128, 0.6);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @media (max-width: 768px) {
+            .success-container {
+                margin: 1rem;
+                padding: 2rem;
+            }
+            .success-title {
+                font-size: 2rem;
+            }
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="banner">
-        <span class="success-icon">🎉</span>
-        <strong>Sign in successful!</strong>
-        <% if (typeof username !== 'undefined' && username) { %>
-            <div class="username">Welcome, <%= username %>!</div>
-        <% } else { %>
-            <div class="username">Welcome to Mandvi's web app.</div>
-        <% } %>
-        <div class="desc">You have successfully signed in. Explore your dashboard and enjoy all the features!</div>
-        <form action="/" method="get">
-            <button type="submit">Go to Home</button>
-        </form>
-        <a class="footer-link" href="/signin">Sign in with another account</a>
+    <div class="particles">
+        <div class="particle">✨</div>
+        <div class="particle">🎉</div>
+        <div class="particle">⭐</div>
+        <div class="particle">✨</div>
+        <div class="particle">🎉</div>
+        <div class="particle">⭐</div>
+        <div class="particle">✨</div>
+        <div class="particle">🎉</div>
+        <div class="particle">⭐</div>
+    </div>
+    
+    <div class="success-container">
+        <div class="checkmark">✅</div>
+        <h1 class="success-title">Welcome!</h1>
+        <p class="success-message">You have successfully signed in to your account. Enjoy exploring our platform!</p>
+        
+        <div class="user-info">
+            <h3>Signed in as:</h3>
+            <p><%= user.username %></p>
+        </div>
+        
+        <div class="action-buttons">
+            <a href="/" class="btn btn-primary">
+                🏠 Go Home
+            </a>
+            <button onclick="window.history.back()" class="btn btn-secondary">
+                ← Go Back
+            </button>
+        </div>
+    </div>
+</body>
+</html>
+        .particle:nth-child(7) { left: 70%; animation-delay: 3s; }
+        .particle:nth-child(8) { left: 80%; animation-delay: 3.5s; }
+        .particle:nth-child(9) { left: 90%; animation-delay: 4s; }
+        
+        @keyframes particle-float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Main container */
+        .success-container {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 500px;
+            padding: 2rem;
+            animation: successEntrance 1s ease-out;
+        }
+        
+        @keyframes successEntrance {
+            from { opacity: 0; transform: scale(0.8) translateY(50px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        
+        /* Success card */
+        .success-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 3rem;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .success-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #00ff88, #00ccff);
+        }
+        
+        /* Success icon */
+        .success-icon {
+            font-size: 5rem;
+            color: #00ff88;
+            margin-bottom: 2rem;
+            animation: successPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes successPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        /* Typography */
+        .success-title {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #00ff88, #00ccff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .success-message {
+            font-size: 1.1rem;
+            color: #aaa;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+        
+        /* User info */
+        .user-info {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .user-detail {
+            color: #ccc;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+        
+        .user-value {
+            color: #00ff88;
+            font-weight: 500;
+        }
+        
+        /* Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, #00ff88, #00ccff);
+            color: #000;
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.2);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #ccc;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+        
+        .btn-primary:hover {
+            box-shadow: 0 15px 40px rgba(0, 255, 136, 0.4);
+        }
+        
+        .btn-secondary:hover {
+            border-color: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .success-container { padding: 1rem; }
+            .success-card { padding: 2rem; }
+            .success-title { font-size: 2rem; }
+            .action-buttons { flex-direction: column; align-items: center; }
+            .btn { width: 100%; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles">
+        <div class="particle">✨</div>
+        <div class="particle">⭐</div>
+        <div class="particle">✨</div>
+        <div class="particle">🎉</div>
+        <div class="particle">✨</div>
+        <div class="particle">⭐</div>
+        <div class="particle">✨</div>
+        <div class="particle">🎉</div>
+        <div class="particle">✨</div>
+    </div>
+    
+    <div class="success-container">
+        <div class="success-card">
+            <div class="success-icon">✅</div>
+            
+            <h1 class="success-title">Welcome!</h1>
+            <p class="success-message">
+                You have successfully signed in to your account. 
+                Welcome back to the future of web applications.
+            </p>
+            
+            <div class="user-info">
+                <div class="user-detail">
+                    Status: <span class="user-value">Authenticated</span>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <a href="/" class="btn btn-primary">Continue</a>
+                <a href="/" class="btn btn-secondary">Back to Home</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        /* Celebration Confetti */
+        .confetti {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #f093fb;
+            animation: confetti-fall 3s linear infinite;
+        }
+        
+        .confetti-piece:nth-child(1) { left: 10%; animation-delay: 0s; background: #667eea; }
+        .confetti-piece:nth-child(2) { left: 20%; animation-delay: 0.5s; background: #f093fb; }
+        .confetti-piece:nth-child(3) { left: 30%; animation-delay: 1s; background: #764ba2; }
+        .confetti-piece:nth-child(4) { left: 40%; animation-delay: 1.5s; background: #4facfe; }
+        .confetti-piece:nth-child(5) { left: 50%; animation-delay: 2s; background: #f5576c; }
+        .confetti-piece:nth-child(6) { left: 60%; animation-delay: 2.5s; background: #667eea; }
+        .confetti-piece:nth-child(7) { left: 70%; animation-delay: 0.3s; background: #f093fb; }
+        .confetti-piece:nth-child(8) { left: 80%; animation-delay: 0.8s; background: #764ba2; }
+        .confetti-piece:nth-child(9) { left: 90%; animation-delay: 1.3s; background: #4facfe; }
+        
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Main Container */
+        .container {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 500px;
+            padding: 2rem;
+        }
+        
+        /* Success Card */
+        .success-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            animation: successBounce 1s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .success-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #4ade80, #22c55e, #16a34a);
+            border-radius: 24px 24px 0 0;
+        }
+        
+        @keyframes successBounce {
+            0% {
+                opacity: 0;
+                transform: scale(0.3) translateY(-100px);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05) translateY(0);
+            }
+            70% {
+                transform: scale(0.95);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        /* Success Icon */
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, #4ade80, #22c55e);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 3rem;
+            color: white;
+            box-shadow: 0 15px 40px rgba(34, 197, 94, 0.3);
+            animation: pulse 2s infinite;
+            position: relative;
+        }
+        
+        .success-icon::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(45deg, #4ade80, #22c55e);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0.3;
+            animation: pulse-ring 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        @keyframes pulse-ring {
+            0% { transform: scale(1); opacity: 0.3; }
+            100% { transform: scale(1.2); opacity: 0; }
+        }
+        
+        /* Typography */
+        .success-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #1f2937;
+            margin-bottom: 1rem;
+            animation: slideUp 0.8s ease-out 0.3s both;
+        }
+        
+        .success-message {
+            font-size: 1.2rem;
+            color: #6b7280;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            animation: slideUp 0.8s ease-out 0.5s both;
+        }
+        
+        /* User Info */
+        .user-info {
+            background: linear-gradient(45deg, #f3f4f6, #e5e7eb);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            animation: slideUp 0.8s ease-out 0.7s both;
+        }
+        
+        .user-detail {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            font-size: 1.1rem;
+            color: #374151;
+            font-weight: 500;
+        }
+        
+        .user-detail i {
+            color: #4ade80;
+            font-size: 1.2rem;
+        }
+        
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: slideUp 0.8s ease-out 0.9s both;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn-secondary {
+            background: rgba(107, 114, 128, 0.1);
+            color: #374151;
+            border: 2px solid #e5e7eb;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(45deg, #5a6fd8, #6a42a0);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(107, 114, 128, 0.15);
+            border-color: #d1d5db;
+        }
+        
+        /* Animations */
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .success-card {
+                padding: 2rem;
+            }
+            
+            .success-title {
+                font-size: 2rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="confetti">
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+        <div class="confetti-piece"></div>
+    </div>
+    
+    <div class="container">
+        <div class="success-card">
+            <div class="success-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            
+            <h1 class="success-title">Welcome!</h1>
+            <p class="success-message">
+                You have successfully signed in to your account. 
+                Welcome back to Mandvi's Web App!
+            </p>
+            
+            <div class="user-info">
+                <div class="user-detail">
+                    <i class="fas fa-user-check"></i>
+                    <span>Authentication Successful</span>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <a href="/" class="btn btn-primary">
+                    <i class="fas fa-home"></i>
+                    Go to Dashboard
+                </a>
+                <a href="/" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Home
+                </a>
+            </div>
+        </div>
     </div>
 </body>
 </html>
