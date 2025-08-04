@@ -6,10 +6,9 @@ const User = require('./models/User');
 
 const app = express();
 
-mongoose.connect('mongodb://localhost:27017/signup_app', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-}).then(() => console.log('MongoDB connected'));
+mongoose.connect('mongodb://localhost:27017/signup_app')
+  .then(() => console.log('MongoDB connected'))
+  .catch(err => console.error('MongoDB connection error:', err));
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -40,7 +39,7 @@ app.post('/signup', async (req, res) => {
 });
 
 app.get('/signin', (req, res) => {
-  res.render('signin');
+  res.render('signin', { error: null });
 });
 
 
@@ -48,7 +47,7 @@ app.post('/signin', async (req, res) => {
   const { username, password } = req.body;
   const user = await User.findOne({ username, password });
   if (user) {
-    res.render('succesfully_signin', { username: user.username });
+    res.render('successfully_signin', { username: user.username });
   } else if (username && password) {
     res.status(400).render('signin', { error: 'Invalid credentials' });
   } 
