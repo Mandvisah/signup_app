@@ -140,6 +140,8 @@
             flex-direction: column;
             justify-content: center;
             animation: slideInLeft 1s ease-out;
+            transform-style: preserve-3d;
+            perspective: 1000px;
         }
         
         .form-card {
@@ -153,6 +155,15 @@
                 0 10px 40px var(--shadow-secondary);
             position: relative;
             overflow: hidden;
+            transform-style: preserve-3d;
+            transition: all 0.4s ease;
+        }
+        
+        .form-card:hover {
+            transform: rotateY(-5deg) rotateX(2deg) translateZ(20px);
+            box-shadow: 
+                0 35px 100px rgba(0, 0, 0, 0.4),
+                0 20px 60px var(--shadow-secondary);
         }
         
         .form-card::before {
